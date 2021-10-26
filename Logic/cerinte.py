@@ -9,7 +9,7 @@ def aplicareDiscount(lista):
     '''
     listaNoua = []
     for vanzare in lista:
-        if vanzare['tip reducere client'] == "silver":
+        if getTipReducereClient(vanzare) == "silver":
             vanzareNoua = creeazaVanzare(
                 getId(vanzare),
                 getTitluCarte(vanzare),
@@ -18,7 +18,7 @@ def aplicareDiscount(lista):
                 getTipReducereClient(vanzare)
             )
             listaNoua.append(vanzareNoua)
-        elif vanzare['tip reducere client'] == "gold":
+        elif getTipReducereClient(vanzare) == "gold":
             vanzareNoua = creeazaVanzare(
                 getId(vanzare),
                 getTitluCarte(vanzare),
