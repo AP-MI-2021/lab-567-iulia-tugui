@@ -1,4 +1,4 @@
-from Teste.testCRUD import testAdaugareVanzare, testStergereVanzare, testModificareVanzare
+from Teste.testCRUD import testAdaugareVanzare, testStergereVanzare, testModificareVanzare, testGetById
 from Teste.testCerinte import testAplicareDiscount
 from Teste.testDomain import testVanzare
 
@@ -9,4 +9,5 @@ def runAllTests():
     testStergereVanzare()
     testModificareVanzare()
     testAplicareDiscount()
+    testGetById()
 
