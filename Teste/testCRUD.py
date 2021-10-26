@@ -44,3 +44,11 @@ def testModificareVanzare():
     assert getGenCarte(vanzareNemodificata) == "fictiune"
     assert getPret(vanzareNemodificata) == 40
     assert getTipReducereClient(vanzareNemodificata) == "gold"
+
+def testGetById():
+    lista = []
+    lista = adaugareVanzare("1", "Harry Potter", "fantastic", 40, "silver", lista)
+    lista = adaugareVanzare("2", "Eseu despre orbire", "fictiune", 40, "gold", lista)
+    assert getById("1", lista) == lista[0]
+    assert getById("2", lista) == lista[1]
+    assert getById("3", lista) is None
