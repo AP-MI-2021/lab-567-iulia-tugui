@@ -1,5 +1,6 @@
 from Teste.testCRUD import testAdaugareVanzare, testStergereVanzare, testModificareVanzare, testGetById
-from Teste.testCerinte import testAplicareDiscount
+from Teste.testCerinte import testAplicareDiscount, testModificareaGenuluiPentruTitlu, testListaGenuri, \
+    testPretMinimPentruFiecareGen
 from Teste.testDomain import testVanzare
 
 
@@ -10,4 +11,7 @@ def runAllTests():
     testModificareVanzare()
     testAplicareDiscount()
     testGetById()
+    testModificareaGenuluiPentruTitlu()
+    testListaGenuri()
+    testPretMinimPentruFiecareGen()
 

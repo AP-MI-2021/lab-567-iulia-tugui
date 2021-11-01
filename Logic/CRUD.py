@@ -1,5 +1,17 @@
 from Domain.vanzare import getId, creeazaVanzare
 
+def getById(id, lista):
+    '''
+    gaseste o vanzare cu id-ul dat in lista
+    :param id: string
+    :param lista: lista de vanzari
+    :return: vanzarea cu id-ul dat din lista sau None, daca aceasta nu exista
+    '''
+    for vanzare in lista:
+        if getId(vanzare) == id:
+            return vanzare
+    return None
+
 
 def adaugareVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client, lista):
     '''
@@ -12,6 +24,8 @@ def adaugareVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client, lista
     :param lista: lista de vanzari
     :return: o lista continand atat elementele vechi, cat si vanzarea nou adaugata
     '''
+    if getById(id, lista) is not None:
+        raise ValueError("Id-ul exista deja!")
     vanzare = creeazaVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client)
     return lista + [vanzare]
 
@@ -22,6 +36,8 @@ def stergereVanzare(id, lista):
     :param lista: lista de vanzari
     :return: lista continand vechile elemente mai putin vanzarea care a fost stearsa
     '''
+    if getById(id, lista) is None:
+        raise ValueError("Nu exista o vanzare cu id-ul dat!")
     return [vanzare for vanzare in lista if getId(vanzare) != id]
 
 def modificareVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client, lista):
@@ -35,6 +51,8 @@ def modificareVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client, lis
     :param lista: o lista de vanzari
     :return: lista modificata
     '''
+    if getById(id, lista) is None:
+        raise ValueError("Nu exista o vanzare cu id-ul dat!")
     listaNoua = []
     for vanzare in lista:
         if getId(vanzare) == id:
@@ -44,14 +62,3 @@ def modificareVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client, lis
             listaNoua.append(vanzare)
     return listaNoua
 
-def getById(id, lista):
-    '''
-    gaseste o vanzare cu id-ul dat in lista
-    :param id: string
-    :param lista: lista de vanzari
-    :return: vanzarea cu id-ul dat din lista sau None, daca aceasta nu exista
-    '''
-    for vanzare in lista:
-        if getId(vanzare) == id:
-            return vanzare
-    return None

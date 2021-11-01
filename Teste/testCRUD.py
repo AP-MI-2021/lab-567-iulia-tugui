@@ -17,12 +17,21 @@ def testStergereVanzare():
     lista = []
     lista = adaugareVanzare("1", "Harry Potter", "fantastic", 40, "silver", lista)
     lista = adaugareVanzare("2", "Eseu despre orbire", "fictiune", 40, "gold", lista)
-
+    print(lista)
     lista = stergereVanzare("1", lista)
 
     assert len(lista) == 1
     assert getById("1", lista) is None
     assert getById("2", lista) is not None
+
+    try:
+        lista = stergereVanzare("3", lista)
+        assert False
+    except ValueError:
+        assert len(lista) == 1
+        assert getById("2", lista) is not None
+    except Exception:
+        assert False
 
 def testModificareVanzare():
     lista = []
@@ -44,6 +53,21 @@ def testModificareVanzare():
     assert getGenCarte(vanzareNemodificata) == "fictiune"
     assert getPret(vanzareNemodificata) == 40
     assert getTipReducereClient(vanzareNemodificata) == "gold"
+
+    lista = []
+    lista = adaugareVanzare("1", "Harry Potter", "fantastic", 40, "silver", lista)
+
+    try:
+        lista = modificareVanzare("3", "Eseu despre orbire", "fictiune", 40, "gold", lista)
+    except ValueError:
+        vanzareNemodificata = getById("1", lista)
+        assert getId(vanzareNemodificata) == "1"
+        assert getTitluCarte(vanzareNemodificata) == "Harry Potter"
+        assert getGenCarte(vanzareNemodificata) == "fantastic"
+        assert getPret(vanzareNemodificata) == 40
+        assert getTipReducereClient(vanzareNemodificata) == "silver"
+    except Exception:
+        assert False
 
 def testGetById():
     lista = []
