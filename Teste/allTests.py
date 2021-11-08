@@ -1,7 +1,9 @@
 from Teste.testCRUD import testAdaugareVanzare, testStergereVanzare, testModificareVanzare, testGetById
 from Teste.testCerinte import testAplicareDiscount, testModificareaGenuluiPentruTitlu, testListaGenuri, \
-    testPretMinimPentruFiecareGen
+    testPretMinimPentruFiecareGen, testOrdonareCrescatorDupaPret, testListaTitluriPentruFiecareGen, \
+    testAfisareNumarTitluriDistincte
 from Teste.testDomain import testVanzare
+from Teste.testUndoRedo import testUndoRedo
 
 
 def runAllTests():
@@ -14,4 +16,8 @@ def runAllTests():
     testModificareaGenuluiPentruTitlu()
     testListaGenuri()
     testPretMinimPentruFiecareGen()
+    testOrdonareCrescatorDupaPret()
+    testListaTitluriPentruFiecareGen()
+    testAfisareNumarTitluriDistincte()
+    testUndoRedo()
 

@@ -28,6 +28,26 @@ def adaugareVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client, lista
         raise ValueError("Id-ul exista deja!")
     vanzare = creeazaVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client)
     return lista + [vanzare]
+def adaugaVanzareUndoRedo(id, titlu_carte, gen_carte, pret, tip_reducere_client, lista, undoList, redoList):
+    '''
+    Adauga o vanzare in lista
+    :param id: string
+    :param titlu_carte: string
+    :param gen_carte: string
+    :param pret: float
+    :param tip_reducere_client: string
+    :param lista: lista de vanzari
+    :param undoList:
+    :param redoList:
+    :return: Retuneaza o lista continand atat elementele vechi cat si noua vanzare
+    '''
+
+    if getById(id, lista) is not None:
+        raise ValueError("Id-ul exista deja!")
+    vanzare = creeazaVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client)
+    undoList.append(lista)
+    redoList.clear()
+    return lista + [vanzare]
 
 def stergereVanzare(id, lista):
     '''

@@ -8,13 +8,7 @@ def creeazaVanzare(id, titlu_carte, gen_carte, pret, tip_reducere_client):
     :param tip_reducere_client: string
     :return: o lista ce retine o vanzare
     '''
-    return [
-        id,
-        titlu_carte,
-        gen_carte,
-        pret,
-        tip_reducere_client,
-    ]
+    return {'id': id, 'titlu_carte': titlu_carte, 'gen_carte': gen_carte, 'pret': pret, 'tip_reducere_client': tip_reducere_client}
 
 def getId(vanzare):
     '''
@@ -22,7 +16,7 @@ def getId(vanzare):
     :param vanzare: tuple de tipul vanzare
     :return: id-ul vanzarii
     '''
-    return vanzare[0]
+    return vanzare['id']
 
 def getTitluCarte(vanzare):
     '''
@@ -30,7 +24,7 @@ def getTitluCarte(vanzare):
     :param vanzare: tuple de tipul vanzare
     :return: titlul cartii
     '''
-    return vanzare[1]
+    return vanzare['titlu_carte']
 
 def getGenCarte(vanzare):
     '''
@@ -38,7 +32,7 @@ def getGenCarte(vanzare):
     :param vanzare: tuple de tipul vanzare
     :return: genul cartii
     '''
-    return vanzare[2]
+    return vanzare['gen_carte']
 
 def getPret(vanzare):
     '''
@@ -46,7 +40,7 @@ def getPret(vanzare):
     :param vanzare: tuple de tipul vanzare
     :return: pretul cartii
     '''
-    return vanzare[3]
+    return vanzare['pret']
 
 def getTipReducereClient(vanzare):
     '''
@@ -54,7 +48,7 @@ def getTipReducereClient(vanzare):
     :param vanzare: tuple de tipul vanzare
     :return: tipul reducerii clientului
     '''
-    return vanzare[4]
+    return vanzare['tip_reducere_client']
 
 def toString(vanzare):
     return "id: {}, titlu carte: {}, gen carte: {}, pret: {}, tip reducere client: {}".format(

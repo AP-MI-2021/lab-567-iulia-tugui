@@ -88,4 +88,53 @@ def pretMinimPentruFiecareGen(lista):
         listaPreturi.append(minim)
     return listaPreturi
 
+def ordonareCrescatorDupaPret(lista):
+    '''
+    functia ordoneaza crescator vanzarile in functie de pret
+    :param lista: lista de vanzari
+    :return: lista ordonata
+    '''
+    return sorted(lista, key=getPret)
+
+def listaTitluriPentruFiecareGen(gen, lista):
+    '''
+    returneaza o lista cu titlurile cartilor care au un gen dat
+    :param gen: genul pentru care se cer titlurile
+    :param lista: lista de vanzari
+    :return: lista cu tilurile cartilor care au un anumit gen
+    '''
+    listaTitluri = []
+    for vanzare in lista:
+        if getGenCarte(vanzare) == gen:
+            if getTitluCarte(vanzare) not in listaTitluri:
+                listaTitluri.append(getTitluCarte(vanzare))
+    return listaTitluri
+
+
+def afisareNumarTitluriDistincte(lista):
+    '''
+    functia returneaza o lista cu numarul de titluri distincte pentru fiecare gen
+    :param lista: lista de vanzari
+    :return: lista cu numarul de titluri distincte pentru fiecare gen
+    '''
+    listaGen = listaGenuri(lista)
+    listaNumarTitluri = []
+    for i in listaGen:
+        listaNumarTitluri.append(len(listaTitluriPentruFiecareGen(i, lista)))
+    return listaNumarTitluri
+
+def Undo(lista, undolist, redolist):
+    if len(undolist)>0:
+        redolist.append(lista)
+        lista = undolist.pop()
+    else:
+        return None
+    return lista
+
+def Redo(lista, undolist, redolist):
+    if len(redolist) > 0:
+        undolist.append(lista)
+        lista = redolist.pop()
+    return lista
+
 

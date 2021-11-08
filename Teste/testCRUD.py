@@ -17,7 +17,6 @@ def testStergereVanzare():
     lista = []
     lista = adaugareVanzare("1", "Harry Potter", "fantastic", 40, "silver", lista)
     lista = adaugareVanzare("2", "Eseu despre orbire", "fictiune", 40, "gold", lista)
-    print(lista)
     lista = stergereVanzare("1", lista)
 
     assert len(lista) == 1
